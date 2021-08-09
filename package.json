@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Moloko20/Private_AWG/issues"
   },
-  "homepage": "https://github.com/Moloko20/Private_AWG#readme"
+  "homepage": "https://github.com/Moloko20/Private_AWG#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
 }
