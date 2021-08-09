@@ -25,8 +25,27 @@ let path = {
 };
 
 let { src, dest } = require('gulp'),
-  gulp = require('gulp');
+  gulp = require('gulp'),
+  browsersync = require('browser-sync').create();
 
-function html() {
-  return src(path.src.html).pipe(dest(path.build.html)).pipe();
+function browserSync() {
+  browsersync.init({
+    server: {
+      baseDir: './' + project_folder + '/',
+    },
+    port: 3000,
+    notify: false,
+  });
 }
+function html() {
+  return src(path.src.html)
+    .pipe(dest(path.build.html))
+    .pipe(browsersync.stream());
+}
+
+let build = gulp.series(html);
+let watch = gulp.parallel(build, browserSync);
+
+exports.build = build;
+exports.watch = watch;
+exports.default = watch;

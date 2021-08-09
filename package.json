@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Moloko20/Private_AWG#readme",
   "devDependencies": {
+    "browser-sync": "^2.27.5",
     "gulp": "^4.0.2"
   }
 }
