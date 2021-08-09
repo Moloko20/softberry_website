@@ -1,0 +1,19 @@
+{
+  "name": "private_awg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Moloko20/Private_AWG.git"
+  },
+  "author": "Vetchinkin Alexander <avetchinkin@awg.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Moloko20/Private_AWG/issues"
+  },
+  "homepage": "https://github.com/Moloko20/Private_AWG#readme"
+}
