@@ -1,6 +1,14 @@
-let project_folder = 'dist';
-let source_folder = 'app';
-let path = {
+const { src, dest } = require('gulp');
+const gulp = require('gulp');
+const browsersync = require('browser-sync').create();
+const fileinclude = require('gulp-file-include');
+const scss = require('gulp-sass')(require('sass'));
+const fs = require('fs');
+const path = require('path');
+
+let project_folder = path.resolve(__dirname, './dist');
+let source_folder = path.resolve(__dirname, './app');
+let paths = {
   build: {
     html: project_folder + '/',
     css: project_folder + '/css/',
@@ -21,49 +29,47 @@ let path = {
     js: source_folder + '/js/**/*.js',
     img: source_folder + '/img/**/*.{jpg, png, svg, gif, ico, webp}',
   },
-  clean: './' + project_folder + '/',
+  clean: project_folder,
 };
-
-let { src, dest } = require('gulp'),
-  gulp = require('gulp'),
-  browsersync = require('browser-sync').create(),
-  fileinclude = require('gulp-file-include'),
-  del = require('del'),
-  scss = require('gulp-sass')(require('sass'));
 
 function browserSync() {
   browsersync.init({
     server: {
-      baseDir: './' + project_folder + '/',
+      baseDir: project_folder,
     },
     port: 3000,
     notify: false,
   });
 }
+
 function html() {
-  return src(path.src.html)
+  return src(paths.src.html)
     .pipe(fileinclude())
-    .pipe(dest(path.build.html))
+    .pipe(dest(paths.build.html))
     .pipe(browsersync.stream());
 }
 
 function css() {
-  return src(path.src.css)
+  return src(paths.src.css)
     .pipe(
       scss({
         outputStyle: 'expanded',
       })
     )
-    .pipe(dest(path.build.css))
+    .pipe(dest(paths.build.css))
     .pipe(browsersync.stream());
 }
 
 function watchFiles() {
-  gulp.watch([path.watch.html], html);
-  gulp.watch([path.watch.css], css);
+  gulp.watch([paths.watch.html], html);
+  gulp.watch([paths.watch.css], css);
 }
-function clean() {
-  return del(path.clean);
+
+async function clean() {
+  return await fs.rmSync(project_folder, {
+    recursive: true,
+    force: true,
+  });
 }
 
 let build = gulp.series(clean, gulp.parallel(css, html));
