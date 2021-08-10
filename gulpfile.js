@@ -67,13 +67,7 @@ function css() {
 }
 
 function ts() {
-  return browserify({
-    basedir: '.',
-    debug: true,
-    entries: ['src/ts/main.ts'],
-    cache: {},
-    packageCache: {},
-  })
+  return browserify(paths.src.ts)
     .plugin(tsify)
     .bundle()
     .pipe(source('main.js'))
@@ -88,10 +82,12 @@ function watchFiles() {
 }
 
 async function clean() {
-  return await fs.rmSync(project_folder, {
-    recursive: true,
-    force: true,
-  });
+  if (fs.existsSync(project_folder)) {
+    return await fs.rmSync(project_folder, {
+      recursive: true,
+      force: true,
+    });
+  }
 }
 
 let build = gulp.series(clean, gulp.parallel(css, html, ts));
