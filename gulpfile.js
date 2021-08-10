@@ -5,9 +5,11 @@ const fileinclude = require('gulp-file-include');
 const scss = require('gulp-sass')(require('sass'));
 const fs = require('fs');
 const path = require('path');
+const typescript = require('gulp-typescript');
+const tsProject = typescript.createProject('tsconfig.json');
 
 let project_folder = path.resolve(__dirname, './dist');
-let source_folder = path.resolve(__dirname, './app');
+let source_folder = path.resolve(__dirname, './src');
 let paths = {
   build: {
     html: project_folder + '/',
@@ -22,11 +24,13 @@ let paths = {
     js: source_folder + '/js/script.js',
     img: source_folder + '/img/**/*.{jpg, png, svg, gif, ico, webp}',
     fonts: source_folder + '/fonts/*.ttf',
+    ts: project_folder + '/ts/main.ts',
   },
   watch: {
     html: source_folder + '/**/*.html',
     css: source_folder + '/scss/**/*.scss',
     js: source_folder + '/js/**/*.js',
+    ts: source_folder + '/ts/**/*.ts',
     img: source_folder + '/img/**/*.{jpg, png, svg, gif, ico, webp}',
   },
   clean: project_folder,
@@ -60,9 +64,18 @@ function css() {
     .pipe(browsersync.stream());
 }
 
+function ts() {
+  return tsProject
+    .src()
+    .pipe(tsProject())
+    .js.pipe(dest(paths.build.js))
+    .pipe(browsersync.stream());
+}
+
 function watchFiles() {
   gulp.watch([paths.watch.html], html);
   gulp.watch([paths.watch.css], css);
+  gulp.watch([paths.watch.ts], ts);
 }
 
 async function clean() {
@@ -72,9 +85,10 @@ async function clean() {
   });
 }
 
-let build = gulp.series(clean, gulp.parallel(css, html));
+let build = gulp.series(clean, gulp.parallel(css, html, ts));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
+exports.ts = ts;
 exports.css = css;
 exports.html = html;
 exports.build = build;

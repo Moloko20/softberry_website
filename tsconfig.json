@@ -1,0 +1,14 @@
+// {
+//   "compilerOptions": {
+//     "noImplicitAny": true,
+//     "target": "es5"
+//   },
+//   "exclude": ["node_modules"]
+// }
+{
+  "files": ["src/ts/main.ts", "src/ts/helpers.ts"],
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "target": "es5"
+  }
+}
