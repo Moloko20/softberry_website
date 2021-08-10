@@ -1,5 +1,4 @@
-const { src, dest } = require('gulp');
-const gulp = require('gulp');
+const { src, dest, watch, series, parallel } = require('gulp');
 const browsersync = require('browser-sync').create();
 const fileinclude = require('gulp-file-include');
 const scss = require('gulp-sass')(require('sass'));
@@ -8,7 +7,6 @@ const path = require('path');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const tsify = require('tsify');
-// const tsProject = typescript.createProject('tsconfig.json');
 
 let project_folder = path.resolve(__dirname, './dist');
 let source_folder = path.resolve(__dirname, './src');
@@ -26,7 +24,7 @@ let paths = {
     js: source_folder + '/js/script.js',
     img: source_folder + '/img/**/*.{jpg, png, svg, gif, ico, webp}',
     fonts: source_folder + '/fonts/*.ttf',
-    ts: project_folder + '/ts/main.ts',
+    ts: source_folder + '/ts/main.ts',
   },
   watch: {
     html: source_folder + '/**/*.html',
@@ -76,9 +74,9 @@ function ts() {
 }
 
 function watchFiles() {
-  gulp.watch([paths.watch.html], html);
-  gulp.watch([paths.watch.css], css);
-  gulp.watch([paths.watch.ts], ts);
+  watch([paths.watch.html], html);
+  watch([paths.watch.css], css);
+  watch([paths.watch.ts], ts);
 }
 
 async function clean() {
@@ -90,12 +88,12 @@ async function clean() {
   }
 }
 
-let build = gulp.series(clean, gulp.parallel(css, html, ts));
-let watch = gulp.parallel(build, watchFiles, browserSync);
+let build = series(clean, parallel(css, html, ts));
+let watchAll = parallel(build, watchFiles, browserSync);
 
 exports.ts = ts;
 exports.css = css;
 exports.html = html;
 exports.build = build;
-exports.watch = watch;
-exports.default = watch;
+exports.watch = watchAll;
+exports.default = watchAll;
