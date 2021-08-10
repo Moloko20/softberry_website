@@ -5,8 +5,10 @@ const fileinclude = require('gulp-file-include');
 const scss = require('gulp-sass')(require('sass'));
 const fs = require('fs');
 const path = require('path');
-const typescript = require('gulp-typescript');
-const tsProject = typescript.createProject('tsconfig.json');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const tsify = require('tsify');
+// const tsProject = typescript.createProject('tsconfig.json');
 
 let project_folder = path.resolve(__dirname, './dist');
 let source_folder = path.resolve(__dirname, './src');
@@ -65,10 +67,17 @@ function css() {
 }
 
 function ts() {
-  return tsProject
-    .src()
-    .pipe(tsProject())
-    .js.pipe(dest(paths.build.js))
+  return browserify({
+    basedir: '.',
+    debug: true,
+    entries: ['src/ts/main.ts'],
+    cache: {},
+    packageCache: {},
+  })
+    .plugin(tsify)
+    .bundle()
+    .pipe(source('main.js'))
+    .pipe(dest(paths.build.js))
     .pipe(browsersync.stream());
 }
 
