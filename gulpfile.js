@@ -36,16 +36,6 @@ let paths = {
   clean: project_folder,
 };
 
-function browserSync() {
-  browsersync.init({
-    server: {
-      baseDir: project_folder,
-    },
-    port: 3000,
-    notify: false,
-  });
-}
-
 function html() {
   return src(paths.src.html)
     .pipe(fileinclude())
@@ -74,6 +64,13 @@ function ts() {
 }
 
 function watchFiles() {
+  browsersync.init({
+    server: {
+      baseDir: project_folder,
+    },
+    port: 3000,
+    notify: false,
+  });
   watch([paths.watch.html], html);
   watch([paths.watch.css], css);
   watch([paths.watch.ts], ts);
@@ -89,11 +86,10 @@ async function clean() {
 }
 
 let build = series(clean, parallel(css, html, ts));
-let watchAll = parallel(build, watchFiles, browserSync);
+let watchAll = series(build, watchFiles);
 
 exports.ts = ts;
 exports.css = css;
 exports.html = html;
-exports.build = build;
 exports.watch = watchAll;
-exports.default = watchAll;
+exports.default = build;
