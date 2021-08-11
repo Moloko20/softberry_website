@@ -27,10 +27,10 @@ let paths = {
     ts: path.join(source_folder, '/ts/main.ts'),
   },
   watch: {
-    html: path.join(source_folder, '/**/*.html'),
-    css: path.join(source_folder, '/scss/**/*.scss'),
-    ts: path.join(source_folder, '/ts/**/*.ts'),
-    img: path.join(source_folder, '/img/**/*'),
+    html: path.join(source_folder, '/**/*.html').replace(/\\/g, '/'),
+    css: path.join(source_folder, '/scss/**/*.scss').replace(/\\/g, '/'),
+    ts: path.join(source_folder, '/ts/**/*.ts').replace(/\\/g, '/'),
+    img: path.join(source_folder, '/img/**/*').replace(/\\/g, '/'),
   },
   clean: project_folder,
 };
@@ -56,7 +56,10 @@ function css() {
 }
 
 function img() {
-  return src(paths.src.img).pipe(imagemin()).pipe(dest(paths.build.img));
+  return src(paths.src.img)
+    .pipe(imagemin())
+    .pipe(dest(paths.build.img))
+    .pipe(browsersync.stream());
 }
 
 function ts() {
@@ -79,6 +82,7 @@ function watchFiles() {
   watch([paths.watch.css], css);
   watch([paths.watch.ts], ts);
   watch([paths.watch.html], html);
+  watch([paths.watch.img], img);
 }
 
 async function clean() {
