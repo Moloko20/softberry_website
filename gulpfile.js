@@ -7,6 +7,7 @@ const path = require('path');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const tsify = require('tsify');
+const imagemin = require('gulp-imagemin');
 
 let project_folder = path.resolve(__dirname, './dist');
 let source_folder = path.resolve(__dirname, './src');
@@ -21,7 +22,7 @@ let paths = {
   src: {
     html: path.join(source_folder, '/*.html'),
     css: path.join(source_folder, '/scss/style.scss'),
-    img: path.join(source_folder, '/img/**/*.{jpg, png, svg, gif, ico, webp}'),
+    img: path.join(source_folder, '/img/**/*'),
     fonts: path.join(source_folder, '/fonts/*.ttf'),
     ts: path.join(source_folder, '/ts/main.ts'),
   },
@@ -29,7 +30,7 @@ let paths = {
     html: path.join(source_folder, '/**/*.html'),
     css: path.join(source_folder, '/scss/**/*.scss'),
     ts: path.join(source_folder, '/ts/**/*.ts'),
-    img: path.join(source_folder, '/img/**/*.{jpg, png, svg, gif, ico, webp}'),
+    img: path.join(source_folder, '/img/**/*'),
   },
   clean: project_folder,
 };
@@ -52,6 +53,10 @@ function css() {
     )
     .pipe(dest(paths.build.css))
     .pipe(browsersync.stream());
+}
+
+function img() {
+  return src(paths.src.img).pipe(imagemin()).pipe(dest(paths.build.img));
 }
 
 function ts() {
@@ -85,9 +90,10 @@ async function clean() {
   }
 }
 
-let build = series(clean, parallel(css, html, ts));
+let build = series(clean, parallel(css, html, ts, img));
 let watchAll = series(build, watchFiles);
 
+exports.img = img;
 exports.ts = ts;
 exports.css = css;
 exports.html = html;
