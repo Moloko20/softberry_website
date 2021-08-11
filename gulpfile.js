@@ -35,8 +35,6 @@ let paths = {
   clean: project_folder,
 };
 
-console.log(paths);
-
 function html() {
   return src(paths.src.html)
     .pipe(fileinclude())
