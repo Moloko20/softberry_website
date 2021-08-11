@@ -21,7 +21,6 @@ let paths = {
   src: {
     html: [source_folder + '/*.html', '!' + source_folder + '/_*.html'],
     css: source_folder + '/scss/style.scss',
-    js: source_folder + '/js/script.js',
     img: source_folder + '/img/**/*.{jpg, png, svg, gif, ico, webp}',
     fonts: source_folder + '/fonts/*.ttf',
     ts: source_folder + '/ts/main.ts',
@@ -29,7 +28,6 @@ let paths = {
   watch: {
     html: source_folder + '/**/*.html',
     css: source_folder + '/scss/**/*.scss',
-    js: source_folder + '/js/**/*.js',
     ts: source_folder + '/ts/**/*.ts',
     img: source_folder + '/img/**/*.{jpg, png, svg, gif, ico, webp}',
   },
@@ -71,9 +69,9 @@ function watchFiles() {
     port: 3000,
     notify: false,
   });
-  watch([paths.watch.html], html);
   watch([paths.watch.css], css);
   watch([paths.watch.ts], ts);
+  watch([paths.watch.html], html);
 }
 
 async function clean() {
