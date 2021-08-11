@@ -12,27 +12,29 @@ let project_folder = path.resolve(__dirname, './dist');
 let source_folder = path.resolve(__dirname, './src');
 let paths = {
   build: {
-    html: project_folder + '/',
-    css: project_folder + '/css/',
-    js: project_folder + '/js/',
-    img: project_folder + '/img/',
-    fonts: project_folder + '/fonts/',
+    html: path.join(project_folder, '/'),
+    css: path.join(project_folder, '/css/'),
+    js: path.join(project_folder, '/js/'),
+    img: path.join(project_folder, '/img/'),
+    fonts: path.join(project_folder, '/fonts/'),
   },
   src: {
-    html: [source_folder + '/*.html', '!' + source_folder + '/_*.html'],
-    css: source_folder + '/scss/style.scss',
-    img: source_folder + '/img/**/*.{jpg, png, svg, gif, ico, webp}',
-    fonts: source_folder + '/fonts/*.ttf',
-    ts: source_folder + '/ts/main.ts',
+    html: path.join(source_folder, '/*.html'),
+    css: path.join(source_folder, '/scss/style.scss'),
+    img: path.join(source_folder, '/img/**/*.{jpg, png, svg, gif, ico, webp}'),
+    fonts: path.join(source_folder, '/fonts/*.ttf'),
+    ts: path.join(source_folder, '/ts/main.ts'),
   },
   watch: {
-    html: source_folder + '/**/*.html',
-    css: source_folder + '/scss/**/*.scss',
-    ts: source_folder + '/ts/**/*.ts',
-    img: source_folder + '/img/**/*.{jpg, png, svg, gif, ico, webp}',
+    html: path.join(source_folder, '/**/*.html'),
+    css: path.join(source_folder, '/scss/**/*.scss'),
+    ts: path.join(source_folder, '/ts/**/*.ts'),
+    img: path.join(source_folder, '/img/**/*.{jpg, png, svg, gif, ico, webp}'),
   },
   clean: project_folder,
 };
+
+console.log(paths);
 
 function html() {
   return src(paths.src.html)
