@@ -2,50 +2,121 @@
 
 @import reset
 @import variables
+@import grid
+
+$font-main: "Font Name", Arial, serif
 
 html
     font-size: 10px
+    font-family: $font-main
+    color: $black
 
-.layout
-    max-width: 100rem
-    margin-left: auto
-    margin-right: auto
-    padding-left: 3rem
-    padding-right: 3rem
+a
+    text-decoration: none
+    color: $black
 
-$col-padding: 2rem
-
-.grid
+button
+    background-color: transparent
+.head
+    padding-top: 1rem
+    padding-bottom: 3rem
+    box-shadow: 0 0 5rem rgba(0,0,0,0.3)
+.header
     display: flex
-    margin-left: -($col-padding / 2)
-    margin-right: -($col-padding / 2)
+    justify-content: space-between
+    align-items: center
+    .nav
+        .navigation
+            display: flex
+            li
+                padding-right: 3.9rem
+                a
+    .acc
+        display: flex
+        justify-content: center
+        align-items: center
+        .person
+            margin-right: 1rem
+            
+            border-width: 0.1rem
+            border-style: solid
+            border-color: #eaeae2
+            border-radius: 0.2rem
 
-@mixin column
-    padding-left: $col-padding / 2
-    padding-right: $col-padding / 2  
+            padding-top: 1.8rem
+            padding-right: 1.5rem
+            padding-bottom: 2.0rem
+            padding-left: 1.5rem
 
-.col-
-    &1
-        flex-basis: 8.333%
+        .basket
+            border-radius: 0.2rem
+            background-color: $green
+            box-shadow: 0 0.3rem 0 #6a960c
 
-    &3
-        flex-basis: 25%
-        @include column
+            margin-top: -0.4rem
+            padding-top: 1.3rem
+            padding-right: 3.1rem
+            padding-bottom: 1.2rem
+            padding-left: 2.8rem
+    a
+        font-size: 1.3rem
+        text-transform: uppercase
+        font-weight: bold
+h1
+    font-size: 2.8rem
+    flex-wrap: bold
+    color: $blue
 
-    &4
-        flex-basis: 33.333%
-        @include column
+    margin-top: 6rem
+    margin-bottom: 2.2rem
+p
+    font-size: 1.5rem
+    color: $head-desc
+    width: 73%
+p:last-of-type
+    margin-top: 2.5rem
+.wrapper__feedback
+    display: flex
+    align-items: flex-end
+    height: 100%
+    .feedback
+        border-radius: 0.3rem
+        border: 0.1rem solid #eaeae2
+        .desc
+            padding-top: 1.7rem
+            padding-left: 1.5rem
+            border-bottom: 0.1rem solid #eaeae2
+            h3
+                font-size: 1.8rem
+                margin-bottom: 0.4rem
+            span
+                font-size: 1.5rem
+                color: $head-desc
+            h2
+                font-size: 2rem
+                font-weight: normal
+                margin-top: 2.2rem
+                margin-bottom: 2rem
+        .links
+            padding-top: 1.7rem
+            padding-right: 2.4rem
+            padding-bottom: 0.3rem
+            padding-left: 1.5rem 
+            button
+                margin-bottom: 1rem
+                display: flex
+                align-items: center
+                cursor: pointer
+                svg
+                    width: 2rem
+                    margin-right: 1rem  
+                span
+                    font-size: 1.4rem
 
-    &6
-        flex-basis: 50%
-        @include column
 
-    &9
-        flex-basis: 75%
-        @include column
 
-    &12
-        flex-basis: 100%
-        @include column
-        
-    
+
+
+
+
+
