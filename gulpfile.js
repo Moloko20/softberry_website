@@ -21,7 +21,7 @@ let paths = {
     },
     src: {
         html: path.join(source_folder, '/*.html'),
-        css: path.join(source_folder, '/sass/style.sass'),
+        css: path.join(source_folder, '/sass/main.sass'),
         img: path.join(source_folder, '/img/**/*'),
         fonts: path.join(source_folder, '/fonts/*.ttf'),
         ts: path.join(source_folder, '/ts/main.ts'),
