@@ -1,34 +1,34 @@
 {
-  "name": "private_awg",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "cross-env NODE_ENV=production ./node_modules/gulp/bin/gulp.js",
-    "watch": "cross-env NODE_ENV=development ./node_modules/gulp/bin/gulp.js watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Moloko20/Private_AWG.git"
-  },
-  "author": "Vetchinkin Alexander <avetchinkin@awg.ru>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Moloko20/Private_AWG/issues"
-  },
-  "homepage": "https://github.com/Moloko20/Private_AWG#readme",
-  "devDependencies": {
-    "browser-sync": "^2.27.5",
-    "browserify": "^17.0.0",
-    "cross-env": "^7.0.3",
-    "gulp": "^4.0.2",
-    "gulp-file-include": "^2.3.0",
-    "gulp-imagemin": "^7.1.0",
-    "gulp-sass": "^5.0.0",
-    "gulp-typescript": "^6.0.0-alpha.1",
-    "sass": "^1.37.5",
-    "tsify": "^5.0.4",
-    "typescript": "^4.3.5",
-    "vinyl-source-stream": "^2.0.0"
-  }
+    "name": "private_awg",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "cross-env NODE_ENV=production ./node_modules/gulp/bin/gulp.js",
+        "watch": "cross-env NODE_ENV=development ./node_modules/gulp/bin/gulp.js watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Moloko20/Private_AWG.git"
+    },
+    "author": "Vetchinkin Alexander <avetchinkin@awg.ru>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Moloko20/Private_AWG/issues"
+    },
+    "homepage": "https://github.com/Moloko20/Private_AWG#readme",
+    "devDependencies": {
+        "browser-sync": "^2.27.5",
+        "browserify": "^17.0.0",
+        "cross-env": "^7.0.3",
+        "gulp": "^4.0.2",
+        "gulp-file-include": "^2.3.0",
+        "gulp-imagemin": "^7.1.0",
+        "gulp-sass": "^5.0.0",
+        "gulp-typescript": "^6.0.0-alpha.1",
+        "sass": "^1.37.5",
+        "tsify": "^5.0.4",
+        "typescript": "^4.3.5",
+        "vinyl-source-stream": "^2.0.0"
+    }
 }
