@@ -1,0 +1,45 @@
+.layout
+    max-width: 100rem
+    margin-left: auto
+    margin-right: auto
+    padding-left: 3rem
+    padding-right: 3rem
+
+$col-padding: 2rem
+
+.grid
+    display: flex
+    margin-left: -($col-padding / 2)
+    margin-right: -($col-padding / 2)
+
+@mixin column
+    padding-left: $col-padding / 2
+    padding-right: $col-padding / 2  
+
+.col-
+    &1
+        flex-basis: 8.333%
+
+    &3
+        flex-basis: 25%
+        @include column
+
+    &4
+        flex-basis: 33.333%
+        @include column
+
+    &6
+        flex-basis: 50%
+        @include column
+
+    &8
+        flex-basis: 66.666%
+        @include column
+    
+    &9
+        flex-basis: 75%
+        @include column
+
+    &12
+        flex-basis: 100%
+        @include column
