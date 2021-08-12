@@ -1,7 +1,7 @@
 const { src, dest, watch, series, parallel } = require('gulp');
 const browsersync = require('browser-sync').create();
 const fileinclude = require('gulp-file-include');
-const scss = require('gulp-sass')(require('sass'));
+const sass = require('gulp-sass')(require('sass'));
 const fs = require('fs');
 const path = require('path');
 const browserify = require('browserify');
@@ -21,14 +21,14 @@ let paths = {
     },
     src: {
         html: path.join(source_folder, '/*.html'),
-        css: path.join(source_folder, '/scss/style.scss'),
+        css: path.join(source_folder, '/sass/style.sass'),
         img: path.join(source_folder, '/img/**/*'),
         fonts: path.join(source_folder, '/fonts/*.ttf'),
         ts: path.join(source_folder, '/ts/main.ts'),
     },
     watch: {
         html: path.join(source_folder, '/**/*.html').replace(/\\/g, '/'),
-        css: path.join(source_folder, '/scss/**/*.scss').replace(/\\/g, '/'),
+        css: path.join(source_folder, '/sass/**/*.sass').replace(/\\/g, '/'),
         ts: path.join(source_folder, '/ts/**/*.ts').replace(/\\/g, '/'),
         img: path.join(source_folder, '/img/**/*').replace(/\\/g, '/'),
     },
@@ -45,7 +45,7 @@ function html() {
 function css() {
     return src(paths.src.css)
         .pipe(
-            scss({
+            sass({
                 outputStyle: 'expanded',
             })
         )
