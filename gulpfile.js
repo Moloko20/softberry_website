@@ -20,14 +20,13 @@ let paths = {
         fonts: path.join(project_folder, '/fonts/'),
     },
     src: {
-        html: path.join(source_folder, '/*.html'),
+        html: path.join(source_folder, '/html/index.html'),
         css: path.join(source_folder, '/sass/main.sass'),
         img: path.join(source_folder, '/img/**/*'),
-        fonts: path.join(source_folder, '/fonts/*.ttf'),
         ts: path.join(source_folder, '/ts/main.ts'),
     },
     watch: {
-        html: path.join(source_folder, '/**/*.html').replace(/\\/g, '/'),
+        html: path.join(source_folder, '/html/**/*.html').replace(/\\/g, '/'),
         css: path.join(source_folder, '/sass/**/*.sass').replace(/\\/g, '/'),
         ts: path.join(source_folder, '/ts/**/*.ts').replace(/\\/g, '/'),
         img: path.join(source_folder, '/img/**/*').replace(/\\/g, '/'),
@@ -49,6 +48,11 @@ function css() {
                 outputStyle: 'expanded',
             })
         )
+        .on('error', function (err) {
+            console.error(err.stack);
+
+            this.emit('end');
+        })
         .pipe(dest(paths.build.css))
         .pipe(browsersync.stream());
 }

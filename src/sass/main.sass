@@ -2,9 +2,20 @@
 
 @import reset
 @import variables
-@import grid
+@import typography
 
-$font-main: "Font Name", Arial, serif
+@import components/grid
+@import components/basket
+@import components/cabinet
+@import components/logo
+@import components/navigation
+
+@import blocks/head
+@import blocks/header
+@import blocks/feedback
+
+
+
 
 html
     font-size: 10px
@@ -17,120 +28,24 @@ a
 
 button
     background-color: transparent
-.head
-    padding-top: 1rem
-    padding-bottom: 3rem
-    box-shadow: 0 0 5rem rgba(0,0,0,0.3)
-.header
-    display: flex
-    justify-content: space-between
-    align-items: center
-    .nav
-        .navigation
-            display: flex
-            li
-                padding-right: 3.9rem
-                a
-                    border-bottom: 0.1rem solid #fff
-                    transition-property: all
-                    transition-duration: 0.3s
-                a:hover
-                    border-bottom: 0.1rem solid $black
+
     .acc
         display: flex
         justify-content: center
         align-items: center
-        .person
-            margin-right: 1rem
-
-            border: 0.1rem solid #eaeae2
-            border-radius: 0.2rem
-
-            padding-top: 1.8rem
-            padding-right: 1.5rem
-            padding-bottom: 2.0rem
-            padding-left: 1.5rem
-
-            transition-property: all
-            transition-duration: 0.5s
-        .person:hover
-            background-color: #eaeae2
-        .basket
-            border-radius: 0.2rem
-            background-color: $green
-            box-shadow: 0 0.3rem 0 #6a960c
-
-            margin-top: -0.4rem
-            padding-top: 1.3rem
-            padding-right: 3.1rem
-            padding-bottom: 1.2rem
-            padding-left: 2.8rem
-
-            transition-property: all
-            transition-duration: 0.5s
-        .basket:hover
-            transform: translateY(0.3rem)
-            box-shadow: 0 -0.3rem 0 #6a960c
+        
+        
     a
         font-size: 1.3rem
         text-transform: uppercase
         font-weight: bold
-h1
-    font-size: 2.8rem
-    flex-wrap: bold
-    color: $blue
 
-    margin-top: 6rem
-    margin-bottom: 2.2rem
-p
-    font-size: 1.5rem
-    color: $head-desc
-    width: 73%
-p:last-of-type
-    margin-top: 2.5rem
+
 .wrapper__feedback
     display: flex
     align-items: flex-end
     height: 100%
-    .feedback
-        border-radius: 0.3rem
-        border: 0.1rem solid #eaeae2
-        .desc
-            padding-top: 1.7rem
-            padding-left: 1.5rem
-            border-bottom: 0.1rem solid #eaeae2
-            h3
-                font-size: 1.8rem
-                margin-bottom: 0.4rem
-            span
-                font-size: 1.5rem
-                color: $head-desc
-            h2
-                margin-top: 2.2rem
-                margin-bottom: 2rem
-                a
-                    font-size: 2rem
-        .links
-            padding-top: 1.7rem
-            padding-right: 2.4rem
-            padding-bottom: 0.3rem
-            padding-left: 1.5rem 
-            button
-                margin-bottom: 1rem
-                display: flex
-                align-items: center
-                cursor: pointer
-                svg
-                    width: 2rem
-                    margin-right: 1rem  
-                span
-                    font-size: 1.4rem
-                    border-bottom: 0.1rem solid #fff
-
-                    transition-property: all
-                    transition-duration: 0.3s
-            button:hover span
-                border-bottom: 0.1rem solid #000
+    
                     
                 
 
