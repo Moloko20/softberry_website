@@ -31,16 +31,19 @@ button
             li
                 padding-right: 3.9rem
                 a
+                    border-bottom: 0.1rem solid #fff
+                    transition-property: all
+                    transition-duration: 0.3s
+                a:hover
+                    border-bottom: 0.1rem solid $black
     .acc
         display: flex
         justify-content: center
         align-items: center
         .person
             margin-right: 1rem
-            
-            border-width: 0.1rem
-            border-style: solid
-            border-color: #eaeae2
+
+            border: 0.1rem solid #eaeae2
             border-radius: 0.2rem
 
             padding-top: 1.8rem
@@ -48,6 +51,10 @@ button
             padding-bottom: 2.0rem
             padding-left: 1.5rem
 
+            transition-property: all
+            transition-duration: 0.5s
+        .person:hover
+            background-color: #eaeae2
         .basket
             border-radius: 0.2rem
             background-color: $green
@@ -58,6 +65,12 @@ button
             padding-right: 3.1rem
             padding-bottom: 1.2rem
             padding-left: 2.8rem
+
+            transition-property: all
+            transition-duration: 0.5s
+        .basket:hover
+            transform: translateY(0.3rem)
+            box-shadow: 0 -0.3rem 0 #6a960c
     a
         font-size: 1.3rem
         text-transform: uppercase
@@ -93,10 +106,10 @@ p:last-of-type
                 font-size: 1.5rem
                 color: $head-desc
             h2
-                font-size: 2rem
-                font-weight: normal
                 margin-top: 2.2rem
                 margin-bottom: 2rem
+                a
+                    font-size: 2rem
         .links
             padding-top: 1.7rem
             padding-right: 2.4rem
@@ -112,6 +125,15 @@ p:last-of-type
                     margin-right: 1rem  
                 span
                     font-size: 1.4rem
+                    border-bottom: 0.1rem solid #fff
+
+                    transition-property: all
+                    transition-duration: 0.3s
+            button:hover span
+                border-bottom: 0.1rem solid #000
+                    
+                
+
 
 
 
