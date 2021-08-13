@@ -2,51 +2,62 @@
     border-radius: 0.3rem
     border: 0.1rem solid #eaeae2
 
-    .desc
+    &-desc
         padding-top: 1.7rem
         padding-left: 1.5rem
+        padding-right: 1.5rem
+        padding-bottom: 1.9rem
         border-bottom: 0.1rem solid #eaeae2
 
-        h3
-            font-size: 1.8rem
-            margin-bottom: 0.4rem
+    &__title
+        display: block
+        font-size: 1.8rem
+        margin-bottom: 0.4rem
 
-        span
-            font-size: 1.5rem
-            color: $text-gray
+    &__ask
+        display: block
+        font-size: 1.5rem
+        color: $text-gray
+        margin-bottom: 2.2rem
 
-        h2
-            margin-top: 2.2rem
-            margin-bottom: 2rem
+    &__phone
+        text-decoration: none
+        color: $text
+        font-size: 2rem
 
-            a
-                text-decoration: none
-                color: $text
-                font-size: 2rem
+        transition: color 0.2s ease
 
-    .links
+        &:hover
+            color: $green
+
+    
+
+    &-links
         padding-top: 1.7rem
-        padding-right: 2.4rem
-        padding-bottom: 0.3rem
+        padding-right: 1.5rem
+        padding-bottom: 1.3rem
         padding-left: 1.5rem 
 
-        button
-            background-color: transparent
-            margin-bottom: 1rem
-            display: flex
-            align-items: center
-            cursor: pointer
+    &-button
+        background-color: transparent
+        margin-bottom: 1rem
+        display: flex
+        align-items: center
+        cursor: pointer
 
-            svg
-                width: 2rem
-                margin-right: 1rem  
+        svg
+            width: 2rem
+            margin-right: 1rem
+            color: #7a7a6e
 
-            span
-                font-size: 1.4rem
-                border-bottom: 0.1rem solid #fff
+            transition: color 0.2s ease
 
-                transition-property: all
-                transition-duration: 0.3s
+        &__name
+            font-size: 1.4rem
+            color: #000
 
-            &:hover span
-                border-bottom: 0.1rem solid #000
+            transition: color 0.2s ease
+
+        &:hover &__name, 
+        &:hover svg
+            color: $green
