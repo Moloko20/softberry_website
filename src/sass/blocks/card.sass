@@ -67,7 +67,8 @@
         padding-right: 1rem
 
         border-radius: 2px
-        background-color: #8bc010
+        border: 0.1rem solid $green
+        background-color: $green
 
         font-size: 1.4rem
         line-height: 1.4
@@ -75,6 +76,12 @@
         font-weight: bold
 
         cursor: pointer
+        transition: color 0.2s ease, background-color 0.2s ease
+
+        &:hover,
+        &:active
+            color: $green
+            background-color: #fff
 
 
     
