@@ -67,6 +67,11 @@ function img() {
 function ts() {
     return browserify(paths.src.ts)
         .plugin(tsify)
+        .on('error', function (err) {
+            console.error(err.stack);
+
+            this.emit('end');
+        })
         .bundle()
         .pipe(source('main.js'))
         .pipe(dest(paths.build.js))
