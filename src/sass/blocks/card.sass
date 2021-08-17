@@ -1,20 +1,24 @@
 .card
-    display: flex
-    flex-direction: column
-
-    border: 1px solid #eaeae2
-    border-radius: 3px
-
+    height: 100%
     min-height: 32rem
+    padding-bottom: 2rem
+    
+    &-block
+        display: flex
+        flex-direction: column
 
-    background-color: #fff
-    margin-bottom: 2rem
+        border: 1px solid #eaeae2
+        border-radius: 3px
 
-    cursor: pointer
-    transition: border-color 0.3s ease
+        height: 100%
 
-    &:hover
-        border-color: currentColor
+        background-color: #fff
+
+        cursor: pointer
+        transition: border-color 0.3s ease
+
+        &:hover
+            border-color: currentColor
 
     &-img
         display: flex
@@ -60,6 +64,9 @@
         color: $text
         margin-bottom: 1.5rem
 
+        &:last-child
+            margin-bottom: 0
+
     &-info
         margin-bottom: 2.5rem
 
@@ -68,3 +75,6 @@
         line-height: 1.4
 
         margin-bottom: 0.8rem
+
+        &:last-child
+            margin-bottom: 0
