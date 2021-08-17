@@ -14,22 +14,21 @@
 
     box-shadow: inset 0px 3px 0px 0px #eaeae2
 
-    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease
+    transition: box-shadow 0.2s ease
 
     &:hover
-        border-color: #000
-        background-color: #fff
-        box-shadow: none
+        box-shadow: inset 0px 6px 0px 0px #eaeae2
     
     &__category
         font-size: 1.3rem
         font-weight: bold
         line-height: 1.5
+        text-decoration: none
         color: $text-gray
         text-align: left
 
-        margin-bottom: 2.7rem
-        max-width: 17.2rem  
+        padding-top: 1.4rem
+        padding-bottom: 1.4rem
 
         background-color: transparent
         cursor: pointer
@@ -43,5 +42,5 @@
         &:active
             color: $green
 
-    .active
-        color: $text
+        &--active
+            color: $text
