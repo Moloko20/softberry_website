@@ -4,14 +4,12 @@ const fileinclude = require('gulp-file-include');
 const sass = require('gulp-sass')(require('sass'));
 const fs = require('fs');
 const path = require('path');
-const browserify = require('browserify');
-const source = require('vinyl-source-stream');
 const imagemin = require('gulp-imagemin');
+const gulpts = require('./gulp-ts');
 const postcss = require('gulp-postcss');
 const gulpif = require('gulp-if');
 const terser = require('gulp-terser');
 const isProd = process.env.NODE_ENV === 'production';
-const tsts = require('./gulp-ts');
 
 const project_folder = path.resolve(__dirname, './dist');
 const source_folder = path.resolve(__dirname, './src');
@@ -71,14 +69,13 @@ function img() {
 function ts() {
     return (
         src(paths.src.ts)
-            .pipe(tsts())
+            .pipe(gulpts())
             .on('error', function (err) {
                 console.error(err.stack);
 
                 this.emit('end');
             })
-            // .pipe(source('main.js'))
-            // .pipe(terser())
+            .pipe(gulpif(isProd, terser()))
             .pipe(dest(paths.build.js))
             .pipe(browsersync.stream())
     );
