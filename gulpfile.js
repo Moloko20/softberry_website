@@ -77,7 +77,7 @@ function ts() {
 
                 this.emit('end');
             })
-            .pipe(source('main.js'))
+            // .pipe(source('main.js'))
             // .pipe(terser())
             .pipe(dest(paths.build.js))
             .pipe(browsersync.stream())
