@@ -1,0 +1,37 @@
+.slider
+    margin-top: 2rem
+    margin-left: -1rem
+    margin-right: -1rem
+    overflow: hidden
+
+    &-scroller
+        display: flex
+        transition: transform 0.3s ease
+
+    &-item
+        display: flex
+        flex-direction: column
+        flex-basis: 25%
+        max-width: 25%
+        flex-shrink: 0
+
+        padding-left: $col-padding*0.5
+        padding-right: $col-padding*0.5
+
+        a
+            text-decoration: none
+            font-size: 1.5rem
+            line-height: 1.3
+            color: $text
+
+    &__date
+        font-size: 1.3rem
+        font-weight: bold
+        color: $text-gray
+
+        margin-bottom: 1.6rem
+
+        
+
+
+
