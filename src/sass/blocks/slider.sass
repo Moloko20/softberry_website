@@ -1,8 +1,8 @@
 .slider
-    display: flex
     margin-top: 2rem
     margin-left: -1rem
     margin-right: -1rem
+    overflow: hidden
 
     &-buttons
         display: flex
@@ -24,10 +24,15 @@
         &:last-child
             border-left: 1px solid $gray
 
+    &-scroller
+        display: flex
+
     &-item
         display: flex
         flex-direction: column
         flex-basis: 25%
+        max-width: 25%
+        flex-shrink: 0
 
         padding-left: $col-padding*0.5
         padding-right: $col-padding*0.5
