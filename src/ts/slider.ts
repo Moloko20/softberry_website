@@ -18,7 +18,6 @@ function Slider(sliderBlock: Element) {
         scroller: sliderBlock.querySelector('.slider-scroller'),
         slidesCount: sliderBlock.querySelectorAll('.slider-item').length,
         update: function () {
-            this.update = this.update.bind(this);
             this.scroller.style.transform = `translateX(-${
                 25 * this.currentSlide
             }%)`;
@@ -35,6 +34,9 @@ function Slider(sliderBlock: Element) {
             this.update();
         },
         init: function () {
+            this.prev = this.prev.bind(this)
+            this.next = this.next.bind(this)
+
             this.buttonPrev.addEventListener('click', this.prev);
             this.buttonNext.addEventListener('click', this.next);
             this.update();
