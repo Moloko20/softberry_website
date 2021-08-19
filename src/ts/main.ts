@@ -1,1 +1,2 @@
 import './basket';
+import './slider';
