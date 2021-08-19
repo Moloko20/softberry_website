@@ -26,11 +26,15 @@
         &:last-child
             border-radius: 0 2px 2px 0
 
-        &:hover
+        &:not([disabled]):hover
             border-color: #000
+
+        &:disabled
+            opacity: 0.5
 
     &-scroller
         display: flex
+        transition: transform 0.3s ease
 
     &-item
         display: flex
