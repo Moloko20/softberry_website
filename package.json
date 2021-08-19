@@ -29,6 +29,7 @@
         "gulp-imagemin": "^7.1.0",
         "gulp-postcss": "^9.0.0",
         "gulp-sass": "^5.0.0",
+        "gulp-terser": "^2.0.1",
         "gulp-typescript": "^6.0.0-alpha.1",
         "postcss-csso": "^5.0.1",
         "sass": "^1.37.5",
