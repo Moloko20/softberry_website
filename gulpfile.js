@@ -5,7 +5,7 @@ const sass = require('gulp-sass')(require('sass'));
 const fs = require('fs');
 const path = require('path');
 const imagemin = require('gulp-imagemin');
-const ts = require('./gulp-ts');
+const tsp = require('./gulp-ts');
 const postcss = require('gulp-postcss');
 const gulpif = require('gulp-if');
 const terser = require('gulp-terser');
@@ -67,18 +67,16 @@ function img() {
         .pipe(browsersync.stream());
 }
 function ts() {
-    return (
-        src(paths.src.ts)
-            .pipe(ts())
-            .on('error', function (err) {
-                console.error(err.stack);
+    return src(paths.src.ts)
+        .pipe(tsp())
+        .on('error', function (err) {
+            console.error(err.stack);
 
-                this.emit('end');
-            })
-            .pipe(gulpif(isProd, terser()))
-            .pipe(dest(paths.build.js))
-            .pipe(browsersync.stream())
-    );
+            this.emit('end');
+        })
+        .pipe(gulpif(isProd, terser()))
+        .pipe(dest(paths.build.js))
+        .pipe(browsersync.stream());
 }
 
 function watchFiles() {
