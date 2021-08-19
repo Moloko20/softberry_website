@@ -8,10 +8,13 @@ const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const tsify = require('tsify');
 const imagemin = require('gulp-imagemin');
+const postcss = require('gulp-postcss');
+const gulpif = require('gulp-if');
+const isProd = process.env.NODE_ENV === 'production';
 
-let project_folder = path.resolve(__dirname, './dist');
-let source_folder = path.resolve(__dirname, './src');
-let paths = {
+const project_folder = path.resolve(__dirname, './dist');
+const source_folder = path.resolve(__dirname, './src');
+const paths = {
     build: {
         html: path.join(project_folder, '/'),
         css: path.join(project_folder, '/css/'),
@@ -53,6 +56,7 @@ function css() {
 
             this.emit('end');
         })
+        .pipe(gulpif(isProd, postcss()))
         .pipe(dest(paths.build.css))
         .pipe(browsersync.stream());
 }

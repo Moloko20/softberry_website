@@ -34,8 +34,8 @@ function Slider(sliderBlock: Element) {
             this.update();
         },
         init: function () {
-            this.prev = this.prev.bind(this)
-            this.next = this.next.bind(this)
+            this.prev = this.prev.bind(this);
+            this.next = this.next.bind(this);
 
             this.buttonPrev.addEventListener('click', this.prev);
             this.buttonNext.addEventListener('click', this.next);
