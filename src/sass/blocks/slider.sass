@@ -31,7 +31,7 @@
             border-left: none
             border-radius: 0 2px 2px 0
 
-            &::before
+            &::after
                 position: absolute
 
                 width: 1px
@@ -48,14 +48,11 @@
         &:not([disabled]):hover
             border-color: #000
 
-        &:not([disabled]):hover:before
+        &:not([disabled]):hover:after
             background-color: #000
 
-        &:not([disabled]):hover + .slider__button::before
+        &:not([disabled]):hover + .slider__button::after
             background-color: #000
-
-        &:disabled
-            opacity: 0.5
 
     &-scroller
         display: flex
