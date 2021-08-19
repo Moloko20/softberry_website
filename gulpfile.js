@@ -5,7 +5,7 @@ const sass = require('gulp-sass')(require('sass'));
 const fs = require('fs');
 const path = require('path');
 const imagemin = require('gulp-imagemin');
-const gulpts = require('./gulp-ts');
+const ts = require('./gulp-ts');
 const postcss = require('gulp-postcss');
 const gulpif = require('gulp-if');
 const terser = require('gulp-terser');
@@ -69,7 +69,7 @@ function img() {
 function ts() {
     return (
         src(paths.src.ts)
-            .pipe(gulpts())
+            .pipe(ts())
             .on('error', function (err) {
                 console.error(err.stack);
 
