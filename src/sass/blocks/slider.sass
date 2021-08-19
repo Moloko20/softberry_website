@@ -6,6 +6,7 @@
 
     &-buttons
         display: flex
+        position: relative          
 
     &__button
         display: flex
@@ -23,13 +24,35 @@
 
         cursor: pointer
 
+        &:first-child
+            border-right: none
+
         &:last-child
+            border-left: none
             border-radius: 0 2px 2px 0
-            margin-left: -1px
+
+            &::before
+                position: absolute
+
+                width: 1px
+                height: 32px
+                
+                content: ''
+
+                left: 50%
+                transform: translateX(-50%)
+
+                background-color: $gray
+                transition: background-color 0.2s ease
 
         &:not([disabled]):hover
             border-color: #000
-            z-index: 1
+
+        &:not([disabled]):hover:before
+            background-color: #000
+
+        &:not([disabled]):hover + .slider__button::before
+            background-color: #000
 
         &:disabled
             opacity: 0.5
