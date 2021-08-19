@@ -6,23 +6,29 @@
 
     &-buttons
         display: flex
-        border: 1px solid $gray
-        border-radius: 2px
+        
 
     &__button
         display: flex
         justify-content: center
         align-items: center
 
+        border: 1px solid $gray
+        border-radius: 2px 0 0 2px
+
         width: 3.2rem
         height: 3.2rem
 
         background-color: transparent
+        transition: border-color 0.2s ease
 
         cursor: pointer
 
         &:last-child
-            border-left: 1px solid $gray
+            border-radius: 0 2px 2px 0
+
+        &:hover
+            border-color: #000
 
     &-scroller
         display: flex
