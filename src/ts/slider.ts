@@ -1,31 +1,47 @@
-const leftButton = <HTMLButtonElement>(
-    document.querySelector('.slider__button--left')
-);
-const rightButton = <HTMLButtonElement>(
-    document.querySelector('.slider__button--right')
-);
+type SliderData = {
+    currentSlide: number;
+    buttonPrev: HTMLButtonElement;
+    buttonNext: HTMLButtonElement;
+    scroller: HTMLElement;
+    slidesCount: number;
+    update: () => void;
+    prev: () => void;
+    next: () => void;
+    init: () => void;
+};
 
-const sliderScroller = <HTMLElement>document.querySelector('.slider-scroller');
-const slidesCount = document.querySelectorAll('.slider-item').length;
-let currentSlide: number = 0;
+function Slider(sliderBlock: Element) {
+    const data: SliderData = {
+        currentSlide: 0,
+        buttonPrev: sliderBlock.querySelector('.controls__button--left'),
+        buttonNext: sliderBlock.querySelector('.controls__button--right'),
+        scroller: sliderBlock.querySelector('.slider-scroller'),
+        slidesCount: sliderBlock.querySelectorAll('.slider-item').length,
+        update: function () {
+            this.update = this.update.bind(this);
+            this.scroller.style.transform = `translateX(-${
+                25 * this.currentSlide
+            }%)`;
+            this.buttonPrev.disabled = !this.currentSlide;
+            this.buttonNext.disabled =
+                this.currentSlide + 4 === this.slidesCount;
+        },
+        prev: function () {
+            this.currentSlide--;
+            this.update();
+        },
+        next: function () {
+            this.currentSlide++;
+            this.update();
+        },
+        init: function () {
+            this.buttonPrev.addEventListener('click', this.prev);
+            this.buttonNext.addEventListener('click', this.next);
+            this.update();
+        },
+    };
 
-rightButton.addEventListener('click', slideRight);
-leftButton.addEventListener('click', slideLeft);
-
-function slideShow() {
-    sliderScroller.style.transform = `translateX(-${25 * currentSlide}%)`;
-    leftButton.disabled = !currentSlide;
-    rightButton.disabled = currentSlide + 4 === slidesCount;
+    data.init();
 }
 
-function slideRight() {
-    currentSlide++;
-    slideShow();
-}
-
-function slideLeft() {
-    currentSlide--;
-    slideShow();
-}
-
-slideShow();
+document.querySelectorAll('.news').forEach((slider) => Slider(slider));
