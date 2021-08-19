@@ -4,10 +4,7 @@ const rightButton = document.querySelector('.slider__button--right');
 const sliderScroller = <HTMLElement>document.querySelector('.slider-scroller');
 let currentSlide: number = 0;
 
-console.log(sliderScroller);
-
 rightButton.addEventListener('click', slideRight);
-
 leftButton.addEventListener('click', slideLeft);
 
 function slideRight() {
@@ -24,7 +21,6 @@ function slideRight() {
     }
 
     sliderScroller.style.transform = `translateX(-${25 * currentSlide}%)`;
-    console.log(currentSlide);
 }
 
 function slideLeft() {
@@ -40,5 +36,4 @@ function slideLeft() {
     }
 
     sliderScroller.style.transform = `translateX(-${25 * currentSlide}%)`;
-    console.log(currentSlide);
 }
